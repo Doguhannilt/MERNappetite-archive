@@ -25,5 +25,5 @@ jobs:
         run: |
           docker tag mernappetite-frontend doguhannilt/mernappetite:frontend
           docker tag mernappetite-backend doguhannilt/mernappetite:backend
-          docker push doguhannilt/mernappetite:frontend
-          docker push doguhannilt/mernappetite:backend
+          docker push doguhannilt/mernappetite-frontend:latest
+          docker push doguhannilt/mernappetite-backend:latest
