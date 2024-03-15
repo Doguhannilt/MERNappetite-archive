@@ -23,7 +23,7 @@ jobs:
 
       - name: Push Docker Images to Docker Hub
         run: |
-          docker tag mernappetite-frontend doguhannilt/mernappetite:frontend
-          docker tag mernappetite-backend doguhannilt/mernappetite:backend
+          docker tag mernappetite-frontend doguhannilt/mernappetite:latest
+          docker tag mernappetite-backend doguhannilt/mernappetite:latest
           docker push doguhannilt/mernappetite-frontend:latest
           docker push doguhannilt/mernappetite-backend:latest
