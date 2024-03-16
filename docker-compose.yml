@@ -4,6 +4,8 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+      tags:
+        - doguhannilt/mernappetite-frontend:latest
     ports:
       - "3000:3000"
     depends_on:
@@ -12,5 +14,7 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
+      tags:
+        - doguhannilt/mernappetite-backend:latest
     ports:
       - "5000:5000"
