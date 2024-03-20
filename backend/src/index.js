@@ -1,9 +1,14 @@
 const express = require('express')
 const cors = require('cors')
 const dotenv = require('dotenv')
+const {connection}  = require('./mongodb/mongodb_connection')
+
 
 
 const app = express()
+
+// Database Connection
+connection()
 
 // Any data will be JSON
 app.use(express.json())
