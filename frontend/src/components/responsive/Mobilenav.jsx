@@ -12,14 +12,18 @@ import {
   } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
+import UsernameMenu from './UsernameMenu'
 
 
 const Mobilenav = () => {
-    const {loginWithRedirect } = useAuth0()
+    const {loginWithRedirect, isAuthenticated } = useAuth0()
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = React.useRef()
   return (
-    <div>
+    <span className='flex space-x-2 items-center'>
+    {isAuthenticated 
+    ?  <UsernameMenu  /> 
+    : <div>
        <Button ref={btnRef} colorScheme='red'  onClick={onOpen}>
         Open
       </Button>
@@ -42,7 +46,9 @@ const Mobilenav = () => {
 
         </DrawerContent>
       </Drawer>
-    </div>
+    </div>}
+  </span>
+    
   )
 }
 

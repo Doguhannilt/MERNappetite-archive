@@ -11,11 +11,15 @@ const Auth0ProviderWithNavigate = ({children}) => {
 
       if(!domain || !clientId || !redirectUri) {throw new Error("Unable to initlaise AUTH")}
 
-      return (
-        <Auth0Provider domain={domain} clientId = {clientId} authorizationParams={(redirectUri)} onRedirectCallback={onRedirectCallback}>
-            {children}
-        </Auth0Provider>
-      )
+      const auth0config = {
+        domain: domain,
+        clientId: clientId,
+        authorizationParams: {
+          redirect_uri: redirectUri,
+        }
+      };
+    
+      return <Auth0Provider {...auth0config}>{children}</Auth0Provider>;
 }
 
 export default Auth0ProviderWithNavigate
