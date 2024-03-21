@@ -11,9 +11,11 @@ import {
     Button
   } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
+import { useAuth0 } from '@auth0/auth0-react'
 
 
 const Mobilenav = () => {
+    const {loginWithRedirect } = useAuth0()
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = React.useRef()
   return (
@@ -33,9 +35,9 @@ const Mobilenav = () => {
           <DrawerHeader>Are you hungary?!</DrawerHeader>
 
           <DrawerBody>
-           <Link to={"/login"} className='font-bold font-mono'>
+           <button onClick={async () => await loginWithRedirect()} className='font-bold font-mono'>
             Login!
-           </Link>
+           </button>
           </DrawerBody>
 
         </DrawerContent>
