@@ -2,7 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const dotenv = require('dotenv')
 const {connection}  = require('./mongodb/mongodb_connection')
-
+const myUserRoute = require("./routes/MyUserRoutes") 
 
 
 const app = express()
@@ -16,9 +16,7 @@ app.use(express.json())
 // CORS
 app.use(cors())
 
-app.get('/test', async (req,res) => {
-    console.log("Tested")
-})
+app.use("/api/my/user", myUserRoute)
 
 
 app.listen(7000, () => {
