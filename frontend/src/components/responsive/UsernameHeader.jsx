@@ -1,9 +1,24 @@
 import { useAuth0 } from '@auth0/auth0-react'
-import React from 'react'
+import axios, { Axios } from 'axios'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 const HeaderUsernameMenu = () => {
     const {user, logout} = useAuth0()
+    const {email,sub} = user
+
+    useEffect(() => {
+      // api/my/user
+      axios.post(`http://localhost:7000/api/my/user`, {email,sub})
+        .then(res => {
+          console.log(`Verified -> ${email}`)
+      })
+          .catch(err => {
+              console.error(err);
+          });
+  }, [email]);
+
+
   return (
     <div>
       <details className="dropdown flex items-center px-3 font-bold ">

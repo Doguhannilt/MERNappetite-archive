@@ -5,12 +5,10 @@ const createCurrentUser = async (req, res) => {
     // Check if the user exists
     // Create the user if it doesnt exist 
     // Return the user object to the calling client
-
-
     try {
         
-        const {auth0Id} = req.body
-        const existingUser = await User.findOne({ auth0Id})
+        const {email} = req.body
+        const existingUser = await User.findOne({email})
 
         if(existingUser) {
             return res.status(200).send()

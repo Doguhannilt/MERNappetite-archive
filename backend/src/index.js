@@ -13,8 +13,11 @@ connection()
 // Any data will be JSON
 app.use(express.json())
 
+const corsOptions = {
+    credentials: true, // Credentials özelliği gerekiyorsa
+};
 // CORS
-app.use(cors())
+app.use(cors(corsOptions))
 
 app.use("/api/my/user", myUserRoute)
 

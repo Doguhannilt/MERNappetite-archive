@@ -1,9 +1,8 @@
 const mongoose = require("mongoose")
 
 const userSchema  = new mongoose.Schema({
-    auth0Id: {
+    sub: {
         type: String,
-        required: true
     },
     email: {
         type: String,

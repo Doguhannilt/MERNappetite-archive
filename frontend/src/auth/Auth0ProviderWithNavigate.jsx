@@ -1,10 +1,13 @@
-import React from 'react'
-import {Auth0Provider} from '@auth0/auth0-react'
+import React, { useEffect } from 'react'
+import {Auth0Provider, useAuth0} from '@auth0/auth0-react'
+import axios from 'axios'
 
 const Auth0ProviderWithNavigate = ({children}) => {
-      const onRedirectCallback = (appState,  user) => {
-            console.log("User", user)
-      }
+
+  const { user } = useAuth0();
+    console.log(user)
+
+
       const domain = import.meta.env.VITE_AUTH0_DOMAIN
       const clientId = import.meta.env.VITE_AUTH0_CLIENT_ID
       const redirectUri = import.meta.env.VITE_AUTH0_CALLBACK_URL
