@@ -8,11 +8,8 @@ class Controller {
         try {
             const { email } = req.body;
             const existingUser = await User.findOne({ email });
-    
             const newUser = new User(existingUser);
             await newUser.save();
-    
-           
         } catch (err) {
             console.log(err);
         }
@@ -29,7 +26,6 @@ class Controller {
                 const email = req.params.email
                 const existingUser = await User.find({email: email})
                 res.json(existingUser)
-
         } catch (err) {
             console.log(err)
         }
@@ -51,7 +47,6 @@ class Controller {
                             { name: body.name, addressLine1: body.address, gender: body.gender },
                             { new: true }
                             // {nickname : body.nickname}
-                       
                         );
                        console.log(updatedUser)
                        res.status(200).json({message:"Added"})
