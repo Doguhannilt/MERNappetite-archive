@@ -20,6 +20,12 @@ const userSchema  = new mongoose.Schema({
     country:{
         type: String
     },
+    gender:{
+        type:String
+    },
+    nickname:{
+        type:String
+    }
 
 })
 

@@ -1,14 +1,11 @@
 const express = require('express')
 const cors = require('cors')
 const dotenv = require('dotenv')
-const {connection}  = require('./mongodb/mongodb_connection')
+const MongoDBConnection = require('./mongodb/mongodb_connection')
 const myUserRoute = require("./routes/MyUserRoutes") 
 
 
 const app = express()
-
-// Database Connection
-connection()
 
 // Any data will be JSON
 app.use(express.json())
