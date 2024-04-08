@@ -11,14 +11,16 @@ const Auth0ProviderWithNavigate = ({children}) => {
       const domain = import.meta.env.VITE_AUTH0_DOMAIN
       const clientId = import.meta.env.VITE_AUTH0_CLIENT_ID
       const redirectUri = import.meta.env.VITE_AUTH0_CALLBACK_URL
+      const audience = import.meta.env.VITE_AUTH_AUDIENCE
 
-      if(!domain || !clientId || !redirectUri) {throw new Error("Unable to initlaise AUTH")}
+      if(!domain || !clientId || !redirectUri || !audience) {throw new Error("Unable to initlaise AUTH")}
 
       const auth0config = {
         domain: domain,
         clientId: clientId,
         authorizationParams: {
           redirect_uri: redirectUri,
+          audience
         }
       };
     
