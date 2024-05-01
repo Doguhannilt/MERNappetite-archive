@@ -26,7 +26,7 @@ router.post(
     jwtCheck,
     jwtParse,
     (req, res) => { 
-        controller.createMyRestaurant(req, res); // Kontrolcü işlevini burada çağırın
+        controller.createMyRestaurant(req, res);
     }
 );
 

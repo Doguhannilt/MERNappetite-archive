@@ -1,7 +1,7 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import axios, { Axios } from 'axios'
 import React, { useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 
 const HeaderUsernameMenu = () => {
     const {user, logout, getAccessTokenSilently} = useAuth0()
@@ -35,10 +35,19 @@ const HeaderUsernameMenu = () => {
   return (
     <div>
         <details className="dropdown flex items-center px-3 font-bold ">
-            <summary className="m-1 font-bold text-2xl font-sans ml-40 cursor-pointer">{user?.email}</summary>
-            <ul className="p-2 ml-40 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+            <summary className="m-1 sm:font-bold lg:text-2xl  sm:text-xl font-sans sm:ml-40 cursor-pointer mt-2 sm:mt-0">{user?.email}</summary>
+            <ul className="p-2 sm:ml-40 ml-10 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
                 <li>
                     <Link to={`/user-profile/${user?.email}`} className='font-bold hover:text-red-400'>User Profile</Link>
+                </li>
+                <li>
+                    <Link to={`/managerestaurant/${user?.email}`} className='font-bold hover:text-red-400'>My Restaurant</Link>
+                </li>
+                <li>
+                    <Link to={"/orders"} className='font-bold hover:text-red-400'>Orders</Link>
+                </li>
+                <li>
+                    <Link to={"/order-status"} className='font-bold hover:text-red-400'>Order Status</Link>
                 </li>
                 <li>
                     <button onClick={() => logout({ returnTo: window.location.origin })} className='flex flex-1 font-bold bg-red-500'>
