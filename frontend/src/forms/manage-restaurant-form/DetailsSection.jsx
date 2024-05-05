@@ -59,7 +59,7 @@ const DetailsSection = () => {
         <label className="text-sm font-bold grid">
           Delivery Price
           <input
-            type="text"
+            type="number"
             placeholder='16 €'
             className="border-2 border-white rounded pt-2 bg-inherit w-80  mt-4 focus py-1 px-2 font-normal"
             {...register('deliveryPrice', 

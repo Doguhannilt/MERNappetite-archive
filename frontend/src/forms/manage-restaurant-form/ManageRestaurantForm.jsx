@@ -8,41 +8,41 @@ import DetailsSection from './DetailsSection'
 import CuisinesSection from './CuisinesSection'
 import MenuSection from './MenuSection'
 import ImageSection from './ImageSection'
+import { useCreateMyRestaurant } from './MyRestaurantApi'
 
 
 const ManageRestaurantForm = () => {
+  axios.defaults.withCredentials = true
 
     const formMethods = useForm()
     const {handleSubmit} = formMethods
-    axios.defaults.withCredentials = true
+    
 
 
     const onSubmit = handleSubmit(async (formDataJson) => {
         try {
             
             const formData = new FormData()
+            formData.append("restaurantName", formDataJson.restaurantName);
+            formData.append("city", formDataJson.city);
+            formData.append("country", formDataJson.country);
+            formData.append("deliveryPrice", formDataJson.deliveryPrice); // required değilse parseFloat gerekmez
+            formData.append("estimatedDeliveryTime", formDataJson.estimatedDeliveryTime);
+            formData.append("cuisines", formDataJson.cuisines); // JSON.stringify gerekmez
+            formData.append("menuItems", formDataJson.menuItems); // 2
+        
 
-            formData.append("restaurantName", formDataJson.restaurantName)
-            formData.append("city", formDataJson.city.toString())
-            formData.append("country", formDataJson.country)
-            formData.append("deliveryPrice", formDataJson.deliveryPrice.toString()); 
-            formData.append("estimatedDeliveryTime", formDataJson.estimatedDeliveryTime.toString());
-            formData.append("cuisines", formDataJson.cuisines.join(","));
-            formData.append("menuItems", JSON.stringify(formDataJson.menuItems));
-            
-          console.log(formDataJson)
+          // cuisines -> object
+          // imagefile -> undefined
+          // menuItems -> object
+
           
-            Array.from(formDataJson.imageFiles).forEach((imageFile) => {
-                formData.append(`imageFiles`, imageFile);
-            });
-            
 
             // const response = await axios.post("http://localhost:7000/", formData, {
             //     headers: {
             //         "Content-Type": "multipart/form-data",            
             //     }         
             // });
-
 
         } catch (err) {
           console.log(err)

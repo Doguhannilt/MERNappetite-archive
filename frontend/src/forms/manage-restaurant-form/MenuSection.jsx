@@ -28,7 +28,7 @@ const MenuSection = () => {
                                 {...register(`menuItems[${index}].name`)}
                             />
                             <input
-                                type="text"
+                                type="number"
                                 className='bg-inherit border-white border-2 rounded'
                                 placeholder="Price"
                                 {...register(`menuItems[${index}].price`)}
