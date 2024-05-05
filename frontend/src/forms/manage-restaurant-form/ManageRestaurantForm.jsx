@@ -5,6 +5,7 @@ import axios from 'axios'
 
 // PAGES
 import DetailsSection from './DetailsSection'
+import CuisinesSection from './CuisinesSection'
 
 
 const ManageRestaurantForm = () => {
@@ -27,6 +28,8 @@ const ManageRestaurantForm = () => {
             formData.append("cuisines", formDataJson.cuisines.join(","));
             formData.append("menuItems", JSON.stringify(formDataJson.menuItems));
             
+          console.log(formDataJson)
+          
             Array.from(formDataJson.imageFiles).forEach((imageFile) => {
                 formData.append(`imageFiles`, imageFile);
             });
@@ -53,7 +56,8 @@ const ManageRestaurantForm = () => {
 
             {/* FORM COMPONENTS */}
 
-            <DetailsSection/>
+          <DetailsSection />
+          <CuisinesSection/>
 
 
             <span className='flex justify-end'>
