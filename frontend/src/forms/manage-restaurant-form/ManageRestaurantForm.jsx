@@ -7,6 +7,7 @@ import axios from 'axios'
 import DetailsSection from './DetailsSection'
 import CuisinesSection from './CuisinesSection'
 import MenuSection from './MenuSection'
+import ImageSection from './ImageSection'
 
 
 const ManageRestaurantForm = () => {
@@ -60,6 +61,7 @@ const ManageRestaurantForm = () => {
           <DetailsSection />
           <CuisinesSection />
           <MenuSection />
+          <ImageSection />
 
 
             <span className='flex justify-end'>
