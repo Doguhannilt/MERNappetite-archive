@@ -6,6 +6,7 @@ import axios from 'axios'
 // PAGES
 import DetailsSection from './DetailsSection'
 import CuisinesSection from './CuisinesSection'
+import MenuSection from './MenuSection'
 
 
 const ManageRestaurantForm = () => {
@@ -57,7 +58,8 @@ const ManageRestaurantForm = () => {
             {/* FORM COMPONENTS */}
 
           <DetailsSection />
-          <CuisinesSection/>
+          <CuisinesSection />
+          <MenuSection />
 
 
             <span className='flex justify-end'>

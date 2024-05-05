@@ -12,7 +12,7 @@ const DetailsSection = () => {
             </div>
 
              {/* Restaurant Name field */}
-          <label className="text-sm font-bold grid">
+          <label className="text-sm font-bold xl:grid">
           Restaurant Name
           <input
             type="text"
@@ -23,10 +23,10 @@ const DetailsSection = () => {
           {errors.restaurantName && <span className="text-red-500 pl-2">{errors.restaurantName.message}</span>}
             </label>
 
-        <div className='grid grid-cols-2'>
+        <div className='xl:grid xl:grid-cols-2'>
 
             {/* City Field */}
-        <label className="text-sm font-bold grid">
+        <label className="text-sm font-bold xl:grid">
           City
           <input
             type="text"
@@ -40,7 +40,7 @@ const DetailsSection = () => {
 
 
              {/* Country Field */}
-        <label className="text-sm font-bold grid">
+        <label className="text-sm font-bold xl:grid">
           Country
           <input
             type="text"
@@ -54,7 +54,7 @@ const DetailsSection = () => {
         </div>
 
 
-        <div className='grid grid-cols-2'>
+        <div className='xl:grid xl:grid-cols-2'>
              {/* deliveryPrice Field */}
         <label className="text-sm font-bold grid">
           Delivery Price
