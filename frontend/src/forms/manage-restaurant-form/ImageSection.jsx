@@ -10,8 +10,8 @@ const ImageSection = () => {
             <div className='border rounded p-4 mb-6 flex flex-col gap-4'>
                 <input
                     type="file"
-                    multiple
                     accept='image/*'
+                    name = "imageFiles"
                     className='w-40 text-gray-700 font-normal'
                     {...register("imageFiles", {
                         validate: (imageFiles) => {

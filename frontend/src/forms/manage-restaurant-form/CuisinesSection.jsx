@@ -12,6 +12,7 @@ const CuisinesSection = () => {
                     <label key={index} className="text-sm flex gap-1 text-gray-500 cursor-pointer">
                         <input
                             type="checkbox"
+                            name="cuisines"
                             defaultValue={cuisine}
                             {...register("cuisines", {
                                 validate: (cuisines) => {
@@ -21,6 +22,7 @@ const CuisinesSection = () => {
                             })}
                         />
                         {cuisine}
+                        
                     </label>
                 ))}
             </div>

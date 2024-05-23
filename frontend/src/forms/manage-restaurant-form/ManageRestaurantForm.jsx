@@ -1,6 +1,5 @@
 import React from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
-import axios from 'axios'
 
 
 // PAGES
@@ -8,41 +7,59 @@ import DetailsSection from './DetailsSection'
 import CuisinesSection from './CuisinesSection'
 import MenuSection from './MenuSection'
 import ImageSection from './ImageSection'
-import { useCreateMyRestaurant } from './MyRestaurantApi'
+import { forumFill } from '../../fetch/Fetch'
 
 
 const ManageRestaurantForm = () => {
-  axios.defaults.withCredentials = true
 
-    const formMethods = useForm()
-    const {handleSubmit} = formMethods
+  const formMethods = useForm(); 
+    const { handleSubmit } = formMethods; 
+
     
-
-
     const onSubmit = handleSubmit(async (formDataJson) => {
-        try {
-            
-            const formData = new FormData()
-            formData.append("restaurantName", formDataJson.restaurantName);
-            formData.append("city", formDataJson.city);
-            formData.append("country", formDataJson.country);
-            formData.append("deliveryPrice", formDataJson.deliveryPrice); // required değilse parseFloat gerekmez
-            formData.append("estimatedDeliveryTime", formDataJson.estimatedDeliveryTime);
-            formData.append("cuisines", formDataJson.cuisines); // JSON.stringify gerekmez
-            formData.append("menuItems", formDataJson.menuItems); // 2
-        
-
-          // cuisines -> object
-          // imagefile -> undefined
-          // menuItems -> object
-
+      try {
           
+          const formData = new FormData();
 
-            // const response = await axios.post("http://localhost:7000/", formData, {
-            //     headers: {
-            //         "Content-Type": "multipart/form-data",            
-            //     }         
-            // });
+          formData.append("restaurantName", formDataJson.restaurantName);
+          formData.append("city", formDataJson.city);
+          formData.append("country", formDataJson.country);
+      
+          formData.append(
+            "deliveryPrice",
+            (formDataJson.deliveryPrice * 100).toString());
+
+          formData.append(
+            "estimatedDeliveryTime",
+            formDataJson.estimatedDeliveryTime.toString());
+          
+          formData.append("cuisines", formDataJson.cuisines)
+
+          formDataJson.menuItems.forEach((menuItem, index) => {
+            formData.append(`menuItems[${index}][name]`, menuItem.name);
+            formData.append(
+              `menuItems[${index}][price]`,
+              (menuItem.price * 100).toString()
+            );
+          });
+
+        console.log(formDataJson.menuItems)
+       formDataJson.menuItems.forEach((menuItem, index) => {
+        formData.append(`menuItems[${index}][name]`, menuItem.name);
+        formData.append(
+          `menuItems[${index}][price]`,
+          (menuItem.price * 100).toString()
+        );
+      });
+
+      if (formDataJson.imageFiles && formDataJson.imageFiles.length > 0) {
+        Array.from(formDataJson.imageFiles).forEach((file, index) => {
+          formData.append(`imageFiles[${index}]`, file);
+        });
+      }
+      
+      console.log(formData)
+        await forumFill("http://localhost:7000/api/my/restaurant", formData);
 
         } catch (err) {
           console.log(err)
@@ -59,7 +76,7 @@ const ManageRestaurantForm = () => {
             {/* FORM COMPONENTS */}
 
           <DetailsSection />
-          <CuisinesSection />
+          <CuisinesSection/>
           <MenuSection />
           <ImageSection />
 

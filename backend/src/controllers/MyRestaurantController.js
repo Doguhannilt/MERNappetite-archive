@@ -5,8 +5,9 @@ const { Restaurant } = require("../mongodb/models/restaurant");
 class Controller {
     async createMyRestaurant(req, res) {
         try {
-            if (!req.file) {
-                return res.status(400).json({ message: "No file uploaded" });
+
+            if (!req.file || req.file.length === 0) {
+                return res.status(400).json({ message: "No files uploaded" });
             }
 
             const existingRestaurant = await Restaurant.findOne({ user: req.userId });
@@ -15,23 +16,19 @@ class Controller {
                 return res.status(409).json({ message: "User restaurant already exists" });
             }
 
-            const imageFile = req.file;
+            const imageFile = req.File;
+            
+            console.log(`Your imageFile is ${imageFile}`)
 
             const b64 = Buffer.from(imageFile.buffer).toString("base64");
             const dataURI = "data:" + imageFile.mimetype + ";base64," + b64;
             const uploadResponse = await cloudinary.uploader.upload(dataURI);
             const imageUrl = uploadResponse.url;
 
+            console.log(`Your imageUrl is ${imageUrl}`)
+
             const restaurant = new Restaurant({
-                user: new mongoose.Types.ObjectId(req.userId),
-                restaurantName: req.body.restaurantName,
-                city: req.body.city,
-                country: req.body.country,
-                deliveryPrice: parseFloat(req.body.deliveryPrice),
-                estimatedDeliveryTime: req.body.estimatedDeliveryTime,
-                cuisines: JSON.parse(req.body.cuisines),
-                menuItems: JSON.parse(req.body.menuItems),
-                imageUrl: imageUrl,
+                body: req.body,
                 lastUpdate: new Date(),
             });
 

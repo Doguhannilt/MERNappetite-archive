@@ -18,22 +18,13 @@ const upload = multer ({
 
 const controller = new Controller();
 
-
-try {
-    
-} catch (error) {
-    
-}
 // /api/my/restaurant
 router.post(
     "/",    
-    upload.single("imageFile"),
-    validateMyRestaurantRequest,
-    jwtCheck,
-    jwtParse, 
+    upload.single("imageFiles"),
     (req, res) => { 
         controller.createMyRestaurant(req, res);
     }
 );
 
-module.exports = router
+module.exports = router 

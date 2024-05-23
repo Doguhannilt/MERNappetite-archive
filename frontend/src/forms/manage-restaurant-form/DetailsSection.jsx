@@ -17,7 +17,8 @@ const DetailsSection = () => {
           <input
             type="text"
             placeholder="the Moon"
-            autofocus
+            name='restaurantName'
+            autoFocus
             className="border-2 border-white rounded pt-2 bg-inherit w-80  mt-4 focus py-1 px-2 font-normal"
             {...register('restaurantName', { required: 'This field is required' })}/>
           {errors.restaurantName && <span className="text-red-500 pl-2">{errors.restaurantName.message}</span>}
@@ -29,9 +30,10 @@ const DetailsSection = () => {
         <label className="text-sm font-bold xl:grid">
           City
           <input
-            type="text"
-            placeholder='Istanbul'
-            className="border-2 border-white rounded pt-2 bg-inherit w-80  mt-4 focus py-1 px-2 font-normal"
+              type="text"
+              name='city'
+              placeholder='Istanbul'             
+              className="border-2 border-white rounded pt-2 bg-inherit w-80  mt-4 focus py-1 px-2 font-normal"           
             {...register('city', 
             { required: 'This field is required' })}/>
             {errors.city &&
@@ -43,9 +45,10 @@ const DetailsSection = () => {
         <label className="text-sm font-bold xl:grid">
           Country
           <input
-            type="text"
-            placeholder='Turkey'
-            className="border-2 border-white rounded pt-2 bg-inherit w-80  mt-4 focus py-1 px-2 font-normal"
+              type="text"
+              name="country"
+              placeholder='Turkey'
+              className="border-2 border-white rounded pt-2 bg-inherit w-80  mt-4 focus py-1 px-2 font-normal"
             {...register('country', 
             { required: 'This field is required' })}/>
             {errors.country && 
@@ -59,9 +62,10 @@ const DetailsSection = () => {
         <label className="text-sm font-bold grid">
           Delivery Price
           <input
-            type="number"
-            placeholder='16 €'
-            className="border-2 border-white rounded pt-2 bg-inherit w-80  mt-4 focus py-1 px-2 font-normal"
+              type="number"
+              name="deliveryPrice"
+              placeholder='16 €'
+              className="border-2 border-white rounded pt-2 bg-inherit w-80  mt-4 focus py-1 px-2 font-normal"          
             {...register('deliveryPrice', 
             { required: 'This field is required' })}/>
             {errors.deliveryPrice && 
@@ -74,9 +78,10 @@ const DetailsSection = () => {
           Estimated Delivery Time (minutes)
           <input
             type="number"
-            max="60"
-            placeholder='20'
-            className="border-2 border-white rounded pt-2 bg-inherit w-80  mt-4 focus py-1 px-2 font-normal"
+              max="60"
+              name='estimatedDeliveryTime'
+              placeholder='20'
+              className="border-2 border-white rounded pt-2 bg-inherit w-80  mt-4 focus py-1 px-2 font-normal"
             {...register('estimatedDeliveryTime',
             { required: 'This field is required', 
             min: { value: 1, message: 'Minimum value is 1' },
